@@ -1,11 +1,17 @@
-const { defineConfig } = require('@vue/cli-service');
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
-// Elimina la importación de defineConfig
-module.exports = {
-  // Configuración de Vue CLI
-  publicPath: process.env.NODE_ENV === 'production' ? '/production-sub-path/' : '/',
-  devServer: {
-    port: 8080,  // o el puerto que prefieras
-    host: 'localhost'
-  }
-};
+export default defineConfig({
+  plugins: [vue()],
+  define: {
+    '__VUE_PROD_HYDRATION_MISMATCH_DETAILS__': JSON.stringify(false), // Ajuste para el mensaje de advertencia
+  },
+  server: {
+    // Opciones del servidor de desarrollo
+    port: 5173, // Puerto donde se ejecutará el servidor
+    open: true, // Abre el navegador al iniciar el servidor
+  },
+  build: {
+    outDir: 'dist', // Carpeta de salida para la construcción
+  },
+});
