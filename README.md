@@ -45,7 +45,7 @@ Después de la instalación, puedes iniciar el servidor de desarrollo:
 
 npm run dev
 
-Visita `http://localhost:8080` en tu navegador para ver la aplicación en acción.
+Visita `http://localhost:5173` en tu navegador para ver la aplicación en acción.
 
 ### Contribución
 
