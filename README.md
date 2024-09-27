@@ -1,59 +1,56 @@
 # vrtrendscc
 
-## Project setup
-```
+## Configuración del proyecto
+
 npm install
-```
 
-### Compiles and hot-reloads for development
-```
+### Compila y recarga automáticamente para desarrollo
+
 npm run serve
-```
 
-### Compiles and minifies for production
-```
+### Compila y minimiza para producción
+
 npm run build
-```
 
-### Lints and fixes files
-```
+### Lint y arregla archivos
+
 npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Personaliza la configuración
 
-### S
-El error que estás viendo se debe a que tu archivo vue.config.js está utilizando la sintaxis de ES Modules (importaciones) en un entorno que espera CommonJS (require). Dado que estás usando Vue CLI, el archivo de configuración debe estar en formato CommonJS. Aquí tienes cómo corregirlo y algunos pasos adicionales que podrías seguir.
-1. Corrige el vue.config.js
-Cambia tu archivo vue.config.js para que utilice module.exports en lugar de import:
-javascript
-Copiar código
-module.exports = {
-  lintOnSave: false, // Desactiva ESLint al guardar
-  // Puedes agregar más configuraciones aquí si es necesario
-};
-2. Eliminar el Archivo vite.config.js (si no usas Vite)
-Si decides continuar usando Vue CLI y no Vite, asegúrate de eliminar el archivo vite.config.js si lo has creado, ya que no se utilizará en un proyecto de Vue CLI.
-3. Asegúrate de Usar npm run serve
-Con el archivo vue.config.js corregido, intenta ejecutar nuevamente:
+Consulta la [Referencia de Configuración](https://cli.vuejs.org/config/).
+
+## Descripción del Proyecto
+
+vrtrendscc es una aplicación de Vue.js diseñada para visualizar datos de Google Trends. El proyecto cuenta con una interfaz responsiva que permite a los usuarios ver varias representaciones gráficas de temas en tendencia en tiempo real.
+
+### Características
+
+- Visualización de datos en tiempo real desde Google Trends.
+- Múltiples representaciones gráficas como series de tiempo, mapas geográficos, temas relacionados y consultas.
+- Una interfaz fácil de usar adaptada a la estética de Grand Velas Resorts.
+- Ciclo automático entre palabras clave cada minuto.
+
+### Instalación
+
+Para configurar el proyecto localmente, clona el repositorio y ejecuta los siguientes comandos:
+
+git clone <repository-url>
+cd vrtrendscc 
+npm install
+
+### Uso
+
+Después de la instalación, puedes iniciar el servidor de desarrollo:
+
 npm run serve
-4. Si Quieres Usar Vite
-Si decides que quieres usar Vite en lugar de Vue CLI, sigue estos pasos:
-Elimina vue.config.js: No necesitas este archivo cuando usas Vite.
-Actualiza tu package.json: Asegúrate de que los scripts en tu package.json son los adecuados para Vite.
-Aquí tienes un ejemplo de cómo deberían lucir:
-"scripts": {
-  "dev": "vite", // Cambiado a Vite
-  "build": "vite build", // Cambiado a Vite
-  "serve": "vite preview" // Cambiado a Vite
-}
-Asegúrate de que vite y @vitejs/plugin-vue estén instalados:
-npm install --save-dev vite @vitejs/plugin-vue
-5. Inicia el Proyecto con Vite
-Si has decidido usar Vite, ejecuta:
-npm run dev
-Resumen
-Si usas Vue CLI, utiliza module.exports en tu vue.config.js y asegúrate de que no haya archivos de configuración de Vite en el proyecto.
-Si decides usar Vite, elimina el archivo de configuración de Vue y asegúrate de que tus scripts en package.json estén configurados para Vite.
-Si sigues teniendo problemas, no dudes en preguntar.
+
+Visita `http://localhost:5173` en tu navegador para ver la aplicación en acción.
+
+### Contribución
+
+Si deseas contribuir al proyecto, por favor fork el repositorio y envía un pull request.
+
+### Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más información.
