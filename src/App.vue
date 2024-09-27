@@ -1,3 +1,4 @@
+<!-- src\App.vue -->
 <template>
   <div id="app">
     <header>
@@ -11,7 +12,7 @@
 
 <script>
 export default {
-  // No es necesario importar los componentes aquí si usas router
+  name: 'App',
 };
 </script>
 

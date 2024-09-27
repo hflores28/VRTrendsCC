@@ -7,7 +7,7 @@ export default defineConfig({
     '__VUE_PROD_HYDRATION_MISMATCH_DETAILS__': JSON.stringify(false),
   },
   server: {
-    port: 8080, // Puerto que deseas usar
+    port: 5173, // Puerto que deseas usar
     host: '0.0.0.0', // Permite conexiones desde cualquier IP en la red
     open: true, // Abre el navegador automáticamente
     historyApiFallback: true, // Manejo de rutas en modo history
