@@ -1,4 +1,3 @@
-public\keywords.txt
 Grand Velas Riviera Nayarit
 Grand Velas Riviera Maya
 Grand Velas Los Cabos

@@ -8,7 +8,7 @@ export default defineConfig({
   },
   server: {
     port: 8080,
-    host: '192.168.14.9',
+    host: '192.168.14.9'|'localhost',
     open: true,
   },
   build: {

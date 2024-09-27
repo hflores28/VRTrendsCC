@@ -1,37 +1,17 @@
-<!-- src\App.vue -->
 <template>
   <div id="app">
     <header>
       <h1>VR Trends CC</h1>
     </header>
     <main>
-      <KeywordsList @keyword-selected="setKeyword" />
-      <div class="content">
-        <GoogleTrends v-if="selectedKeyword" :keyword="selectedKeyword" />
-      </div>
+      <router-view></router-view> <!-- Aquí se renderizará el componente según la ruta -->
     </main>
   </div>
 </template>
 
 <script>
-import GoogleTrends from './components/GoogleTrends.vue';
-import KeywordsList from './components/KeywordsList.vue';
-
 export default {
-  components: {
-    GoogleTrends,
-    KeywordsList,
-  },
-  data() {
-    return {
-      selectedKeyword: null,
-    };
-  },
-  methods: {
-    setKeyword(keyword) {
-      this.selectedKeyword = keyword;
-    },
-  },
+  // No es necesario importar los componentes aquí si usas router
 };
 </script>
 
@@ -48,17 +28,11 @@ header {
   font-size: 2rem;
 }
 
-.content {
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #f3f3f3;
   padding: 20px;
-}
-
-@media (max-width: 768px) {
-  .content {
-    flex-direction: column;
-  }
 }
 </style>
