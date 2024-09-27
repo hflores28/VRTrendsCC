@@ -1,9 +1,9 @@
 <!-- src\components\GoogleTrends.vue -->
 <template>
   <div class="google-trends">
-    <h2>Google Trends Data for {{ keyword }}</h2>
+    <h2>Google Trends Data</h2>
     <div v-if="error">{{ error }}</div>
-    <div v-else>
+    <div v-else class="trends-container">
       <iframe
         v-for="widget in widgets"
         :key="widget.id"
@@ -32,9 +32,12 @@ export default {
   },
   methods: {
     generateWidgetUrls() {
-      const baseUrl = "https://trends.google.com/trends/embed/explore/";
-      const queryParams = (type) =>
-        `${baseUrl}${type}?q=${encodeURIComponent(this.keyword)}&geo=MX&date=now 1-d`;
+      const baseUrl = "trends/embed/explore/"; // Cambiado a usar el proxy
+      const queryParams = (type) => {
+        const url = `${baseUrl}${type}?q=${encodeURIComponent(this.keyword)}&geo=MX&date=now 1-d`;
+        console.log(`Generated URL for ${type}: ${url}`);
+        return url;
+      };
 
       return [
         { id: "TIMESERIES", url: queryParams("TIMESERIES") },
@@ -43,33 +46,16 @@ export default {
         { id: "RELATED_QUERIES", url: queryParams("RELATED_QUERIES") },
       ];
     },
-    async loadTrendsData() {
+    loadTrendsData() {
       this.widgets = this.generateWidgetUrls();
-      try {
-        const responses = await Promise.all(
-          this.widgets.map(async (widget) => {
-            const response = await fetch(widget.url);
-            if (!response.ok) {
-              throw new Error(`Failed to fetch ${widget.url}: ${response.status}`);
-            }
-            return response.ok;
-          })
-        );
-
-        const hasValidData = responses.every((res) => res);
-        this.error = hasValidData ? null : "No hay suficientes datos para mostrar.";
-      } catch (error) {
-        this.error = error.message;
-      }
+      this.error = null; // Resetear el error
     },
+  },
+  watch: {
+    keyword: 'loadTrendsData', // Llamar a loadTrendsData cuando la keyword cambia
   },
   mounted() {
     this.loadTrendsData();
-  },
-  watch: {
-    keyword: function () {
-      this.loadTrendsData();
-    },
   },
 };
 </script>
@@ -78,14 +64,30 @@ export default {
 .google-trends {
   text-align: center;
   padding: 20px;
-  background-color: #004080; /* Azul Grand Velas Resorts */
-  color: white;
+  background-color: #EBEBEB; /* Blanco Grand Velas Resorts */
+  color: black;
+}
+
+.trends-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra los iframes en el contenedor */
+  max-width: 1200px; /* Tamaño máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor en el body */
 }
 
 .trends-frame {
-  width: 100%;
-  height: 400px;
-  margin-bottom: 20px;
+  width: 45%; /* Cambia esto para ajustar el tamaño */
+  height: 300px;
+  margin: 10px; /* Espaciado entre los iframes */
   border: none;
+  border-radius: 8px; /* Bordes redondeados para un diseño más suave */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para el efecto de elevación */
+}
+
+@media (max-width: 768px) {
+  .trends-frame {
+    width: 100%; /* Ancho completo en pantallas más pequeñas */
+  }
 }
 </style>

@@ -1,3 +1,4 @@
+// vite.config.js
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 
@@ -11,6 +12,15 @@ export default defineConfig({
     host: '0.0.0.0', // Permite conexiones desde cualquier IP en la red
     open: true, // Abre el navegador automáticamente
     historyApiFallback: true, // Manejo de rutas en modo history
+    proxy: {
+      // Configuración del proxy para Google Trends
+      '/trends': {
+        target: 'https://trends.google.com',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/trends/, ''),
+      },
+    },
   },
   build: {
     outDir: 'dist', // Directorio de salida para la construcción

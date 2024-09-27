@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     selectKeyword(keyword) {
-      this.$emit("keyword-selected", keyword);
+      this.$emit("keyword-selected", keyword); // Emitir el evento al seleccionar la palabra clave
     },
     changeKeywordPeriodically() {
       this.keywordInterval = setInterval(() => {
@@ -50,7 +50,7 @@ ul {
 }
 
 li {
-  color: #004080;
+  color: white;
   font-size: 16px;
   cursor: pointer;
 }

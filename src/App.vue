@@ -2,10 +2,10 @@
 <template>
   <div id="app">
     <header>
-      <h1>VR Trends CC</h1>
+      <h1>Google Trends - Velas Resorts</h1>
     </header>
     <main>
-      <router-view></router-view> <!-- Aquí se renderizará el componente según la ruta -->
+      <router-view></router-view>
     </main>
   </div>
 </template>
@@ -23,10 +23,10 @@ export default {
 }
 
 header {
-  background-color: #004080; /* Azul Grand Velas Resorts */
-  padding: 20px;
+  background-color: #86725B; /* Cafe Oscuro Grand Velas Resorts */
+  padding: 10px;
   color: white;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 main {
@@ -34,6 +34,6 @@ main {
   flex-direction: column;
   align-items: center;
   background-color: #f3f3f3;
-  padding: 20px;
+  padding: 10px;
 }
 </style>
