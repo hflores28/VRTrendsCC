@@ -20,10 +20,18 @@ export default {
     };
   },
   async mounted() {
-    const response = await fetch("/keywords.txt");
-    const text = await response.text();
-    this.keywords = text.split("\n").filter(Boolean);
-    this.changeKeywordPeriodically();
+    try {
+      const response = await fetch("/keywords.txt");
+      if (!response.ok) {
+        throw new Error("Error al cargar las palabras clave.");
+      }
+      const text = await response.text();
+      this.keywords = text.split("\n").filter(Boolean);
+      this.changeKeywordPeriodically();
+    } catch (error) {
+      console.error(error);
+      this.keywords = ["Error al cargar palabras clave"];
+    }
   },
   beforeDestroy() {
     clearInterval(this.keywordInterval);
@@ -54,4 +62,10 @@ li {
   font-size: 16px;
   cursor: pointer;
 }
+
+li:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Fondo claro al pasar el mouse */
+  border-radius: 4px; /* Bordes redondeados */
+}
+
 </style>

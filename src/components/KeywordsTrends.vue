@@ -7,7 +7,7 @@
     <div class="trends-widget">
       <GoogleTrends :keyword="currentKeyword"></GoogleTrends>
     </div>
-    <KeywordsList @keyword-selected="updateKeyword"></KeywordsList>
+    <!-- <KeywordsList @keyword-selected="updateKeyword"></KeywordsList> -->
   </div>
 </template>
 
@@ -41,14 +41,14 @@ export default {
   align-items: center;
   background-color: #a4957d !important; /* Cafe Claro Grand Velas Resorts */
   color: white;
-  padding: 20px;
+  padding: 7.5px;
   min-height: 65vh;
 }
 
 header {
   background-color: #383634;
   padding: 20px;
-  width: 100%;
+  width: 97%;
   text-align: center;
   color: white;
 }

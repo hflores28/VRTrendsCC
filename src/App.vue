@@ -4,7 +4,7 @@
     <header>
       <h1>Google Trends - Velas Resorts</h1>
     </header>
-    <main>
+    <main style="background-color: #9c9282;">
       <router-view></router-view>
     </main>
   </div>

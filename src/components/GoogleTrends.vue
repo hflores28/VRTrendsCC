@@ -3,6 +3,7 @@
   <div class="google-trends">
     <h2>Google Trends Data</h2>
     <div v-if="error">{{ error }}</div>
+    <div v-if="loading">Cargando...</div>
     <div v-else class="trends-container">
       <iframe
         v-for="widget in widgets"
@@ -28,6 +29,7 @@ export default {
     return {
       widgets: [],
       error: null,
+      loading: true,
     };
   },
   methods: {
@@ -47,8 +49,15 @@ export default {
       ];
     },
     loadTrendsData() {
-      this.widgets = this.generateWidgetUrls();
-      this.error = null; // Resetear el error
+      try {
+          this.widgets = this.generateWidgetUrls();
+          this.loading = false; // Cambia a false cuando se carguen los datos
+          this.error = null; // Resetear el error
+      } catch (err) {
+          this.error = "Error al cargar los datos de Google Trends.";
+          console.error(err); // Mostrar el error en la consola para depuración
+          this.loading = false; // Asegurarse de que el estado de carga se actualice
+      }
     },
   },
   watch: {
