@@ -6,7 +6,7 @@ npm install
 
 ### Compila y recarga automáticamente para desarrollo
 
-npm run serve
+npm run dev
 
 ### Compila y minimiza para producción
 
@@ -18,7 +18,7 @@ npm run lint
 
 ### Personaliza la configuración
 
-Consulta la [Referencia de Configuración](https://cli.vuejs.org/config/).
+Consulta la [Referencia de Configuración](https://vitejs.dev/config/).
 
 ## Descripción del Proyecto
 
@@ -35,7 +35,7 @@ vrtrendscc es una aplicación de Vue.js diseñada para visualizar datos de Googl
 
 Para configurar el proyecto localmente, clona el repositorio y ejecuta los siguientes comandos:
 
-git clone <repository-url>
+git clone https://github.com/hflores28/VRTrendsCC
 cd vrtrendscc 
 npm install
 
@@ -43,9 +43,9 @@ npm install
 
 Después de la instalación, puedes iniciar el servidor de desarrollo:
 
-npm run serve
+npm run dev
 
-Visita `http://localhost:5173` en tu navegador para ver la aplicación en acción.
+Visita `http://localhost:8080` en tu navegador para ver la aplicación en acción.
 
 ### Contribución
 
