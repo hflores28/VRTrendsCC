@@ -7,11 +7,24 @@ export default defineConfig({
     '__VUE_PROD_HYDRATION_MISMATCH_DETAILS__': JSON.stringify(false),
   },
   server: {
-    host: '192.168.14.9', // Tu IP estática
-    port: 8080,           // Puerto donde se ejecutará el servidor
-    open: true,           // Abre el navegador al iniciar el servidor
+    port: 8080,
+    host: '192.168.14.9',
+    open: true,
   },
   build: {
     outDir: 'dist',
+  },
+  // Esto es para manejar rutas en modo history
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
+  // Opciones para servir el index en cada ruta
+  server: {
+    port: 8080,
+    host: '192.168.14.9',
+    open: true,
+    historyApiFallback: true,
   },
 });
