@@ -1,4 +1,3 @@
-<!-- src\components\KeywordsList.vue -->
 <template>
   <div>
     <h2>Keywords</h2>
@@ -38,14 +37,14 @@ export default {
   },
   methods: {
     selectKeyword(keyword) {
-      this.$emit("keyword-selected", keyword); // Emitir el evento al seleccionar la palabra clave
+      this.$emit("keyword-selected", keyword);  // Emitir el evento al seleccionar la palabra clave
     },
     changeKeywordPeriodically() {
       this.keywordInterval = setInterval(() => {
         const keyword = this.keywords[this.currentIndex];
         this.$emit("keyword-selected", keyword);
         this.currentIndex = (this.currentIndex + 1) % this.keywords.length;
-      }, 60000); // Cambia cada minuto
+      }, 60000);  // Cambia cada minuto
     },
   },
 };
@@ -67,5 +66,4 @@ li:hover {
   background-color: rgba(255, 255, 255, 0.2); /* Fondo claro al pasar el mouse */
   border-radius: 4px; /* Bordes redondeados */
 }
-
 </style>
